@@ -1,0 +1,73 @@
+package com.rock.composedome.compose.layout
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+
+class ScaffoldActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent { 
+            ScaffoldBasic()
+        }
+    }
+}
+
+@Composable
+fun ScaffoldBasic(){
+    Scaffold(
+        topBar = {TopAppBarBasic()}
+    ) {
+
+    }
+}
+
+@Composable
+fun TopAppBarBasic(){
+    TopAppBar(
+        backgroundColor = Color.DarkGray,
+        contentColor = Color.White,
+        elevation = 20.dp,
+        navigationIcon = {
+            IconButton(onClick = {},modifier = Modifier.background(Color.Red)) {
+                Icon(Icons.Filled.Close, null)
+            }
+        },
+        title = {
+            Text(
+                modifier = Modifier.background(Color.White).fillMaxWidth(),
+                color = Color.Green,
+                text = "TopAppBar"
+            )
+        },
+        actions = {//row
+            IconButton(onClick = {},modifier = Modifier.background(Color.Blue)) {
+                Icon(Icons.Filled.Email, null)
+            }
+            IconButton(onClick = {},modifier = Modifier.background(Color.Yellow)) {
+                Icon(Icons.Filled.Edit, null)
+            }
+            IconButton(onClick = {},modifier = Modifier.background(Color.Magenta)) {
+                Icon(Icons.Filled.Phone, null)
+            }
+            IconButton(onClick = {},modifier = Modifier.background(Color.Green)) {
+                Icon(Icons.Filled.Home, null)
+            }
+            IconButton(onClick = {},modifier = Modifier.background(Color.Blue)) {
+                Icon(Icons.Filled.Email, null)
+            }
+        }
+
+    )
+}
+

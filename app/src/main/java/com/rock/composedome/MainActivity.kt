@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.rock.composedome.compose.layout.BoxActivity
 import com.rock.composedome.compose.layout.ColumnActivity
 import com.rock.composedome.compose.layout.RowActivity
+import com.rock.composedome.compose.layout.ScaffoldActivity
 import com.rock.composedome.ui.theme.ComposeDomeTheme
 
 class MainActivity : ComponentActivity() {
@@ -25,6 +26,7 @@ class MainActivity : ComponentActivity() {
         it.add(MenuItem("Box Activity"){trans2Activity(BoxActivity::class.java)})
         it.add(MenuItem("Column Activity"){trans2Activity(ColumnActivity::class.java)})
         it.add(MenuItem("Row Activity"){trans2Activity(RowActivity::class.java)})
+        it.add(MenuItem("Scaffold Activity"){trans2Activity(ScaffoldActivity::class.java)})
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

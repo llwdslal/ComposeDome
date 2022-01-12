@@ -10,7 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ComposeDome">
         <activity
+            android:name=".compose.layout.ScaffoldActivity"
+            android:theme="@style/Theme.ComposeDome.NoActionBar"
+            android:exported="false" />
+        <activity
             android:name=".compose.widget.SpacerActivity"
+            android:theme="@style/Theme.ComposeDome.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".compose.layout.RowActivity"
