@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 class ScaffoldActivity : AppCompatActivity() {
@@ -26,7 +27,7 @@ class ScaffoldActivity : AppCompatActivity() {
 @Composable
 fun ScaffoldBasic(){
     Scaffold(
-        topBar = {TopAppBarBasic()}
+        topBar = {TopAppBarBasic2()}
     ) {
 
     }
@@ -45,7 +46,9 @@ fun TopAppBarBasic(){
         },
         title = {
             Text(
-                modifier = Modifier.background(Color.White).fillMaxWidth(),
+                modifier = Modifier
+                    .background(Color.White)
+                    .fillMaxWidth(),
                 color = Color.Green,
                 text = "TopAppBar"
             )
@@ -70,4 +73,27 @@ fun TopAppBarBasic(){
 
     )
 }
+
+@Composable
+fun TopAppBarBasic2(){
+    TopAppBar(backgroundColor = Color.LightGray) {
+        //父容器是 Row
+        IconButton(onClick = {},modifier = Modifier.background(Color.Red)) {
+            Icon(Icons.Filled.Close, null)
+        }
+        Text(
+            modifier = Modifier
+                .background(Color.White)
+                .weight(1f),
+            color = Color.Green,
+            textAlign = TextAlign.Center,
+            text = "TopAppBar"
+        )
+        IconButton(onClick = {},modifier = Modifier.background(Color.Blue)) {
+            Icon(Icons.Filled.Email, null)
+        }
+    }
+}
+
+
 
