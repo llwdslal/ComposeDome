@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -18,6 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 class ScaffoldActivity : AppCompatActivity() {
+    @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent { 
@@ -26,11 +31,16 @@ class ScaffoldActivity : AppCompatActivity() {
     }
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun ScaffoldBasic(){
     Scaffold(
         topBar = {TopAppBarBasic2()},
-        bottomBar = { BottomAppBarBasic()}
+        bottomBar = { BottomAppBarBasic()},
+        floatingActionButton = { FloatingActionButtonBasic() },
+        isFloatingActionButtonDocked = true,
+        floatingActionButtonPosition = FabPosition.Center,
+
     ) {
 
     }
@@ -102,26 +112,49 @@ fun TopAppBarBasic2(){
 //endregion  End
 
 //region BottomAppBar
+
+@ExperimentalMaterialApi
 @Composable
 fun BottomAppBarBasic(){
     BottomAppBar(
-        cutoutShape = RoundedCornerShape(4.dp)
+        cutoutShape = CircleShape,
     ) {
-        IconButton(onClick = {},modifier = Modifier.background(Color.Blue).weight(1f)) {
+        IconButton(onClick = {},modifier = Modifier
+//            .background(Color.Blue)
+            .weight(0.2f)) {
             Icon(Icons.Filled.Email, null)
         }
-        IconButton(onClick = {},modifier = Modifier.background(Color.Yellow).weight(1f)) {
-            Icon(Icons.Filled.Edit, null)
+        IconButton(onClick = {},modifier = Modifier
+//            .background(Color.Yellow)
+            .weight(0.2f)) {
+            BadgeBox(badgeContent = {Text("99")}){
+                Icon(Icons.Filled.Edit, null)
+            }
         }
-        IconButton(onClick = {},modifier = Modifier.background(Color.Magenta).weight(1f)) {
+        Spacer(modifier = Modifier.weight(0.2f))
+        IconButton(onClick = {},modifier = Modifier
+//            .background(Color.Magenta)
+            .weight(0.2f)) {
             Icon(Icons.Filled.Phone, null)
         }
-        IconButton(onClick = {},modifier = Modifier.background(Color.Green).weight(1f)) {
+        IconButton(onClick = {},modifier = Modifier
+//            .background(Color.Green)
+            .weight(0.2f)) {
             Icon(Icons.Filled.Home, null)
         }
     }
 }
 //endregion BottomAppBar End
 
-
+//region
+@Composable
+fun FloatingActionButtonBasic(){
+    FloatingActionButton(
+        onClick = { },
+        shape = CircleShape,
+    ) {
+        Icon(Icons.Filled.Add, null)
+    }
+}
+//endregion  End
 
