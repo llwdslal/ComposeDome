@@ -5,16 +5,15 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
@@ -40,6 +39,9 @@ fun ScaffoldBasic(){
         floatingActionButton = { FloatingActionButtonBasic() },
         isFloatingActionButtonDocked = true,
         floatingActionButtonPosition = FabPosition.Center,
+        drawerGesturesEnabled = true,
+        drawerShape = RoundedCornerShape(4.dp),
+        drawerContent = { Box(modifier = Modifier.fillMaxSize().background(Color.Yellow))}
 
     ) {
 
@@ -116,6 +118,8 @@ fun TopAppBarBasic2(){
 @ExperimentalMaterialApi
 @Composable
 fun BottomAppBarBasic(){
+    val checked  = remember { mutableStateOf(false)}
+
     BottomAppBar(
         cutoutShape = CircleShape,
     ) {
@@ -137,11 +141,19 @@ fun BottomAppBarBasic(){
             .weight(0.2f)) {
             Icon(Icons.Filled.Phone, null)
         }
-        IconButton(onClick = {},modifier = Modifier
-//            .background(Color.Green)
-            .weight(0.2f)) {
-            Icon(Icons.Filled.Home, null)
+
+        IconToggleButton(checked = checked.value, onCheckedChange = {checked.value = it},
+            modifier = Modifier.weight(0.2f) //.background(Color.Green)
+            ) {
+            val tintColor =  if (checked.value) Color.Magenta else Color.White
+            Icon(Icons.Filled.Home, null, tint = tintColor)
         }
+
+//        IconButton(onClick = {},modifier = Modifier
+////            .background(Color.Green)
+//            .weight(0.2f)) {
+//            Icon(Icons.Filled.Home, null)
+//        }
     }
 }
 //endregion BottomAppBar End
