@@ -4,11 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.rock.composedome.compose.OptionMenu
+import com.rock.composedome.demo.layout.ScaffoldActivity
 import com.rock.composedome.demo.layout.BoxActivity
 import com.rock.composedome.demo.layout.ColumnActivity
 import com.rock.composedome.demo.layout.RowActivity
 import com.rock.composedome.demo.widget.SpacerActivity
-import com.rock.composedome.demo.layout.ScaffoldActivity
 import com.rock.composedome.ktx.startActivity
 import com.rock.composedome.models.MenuItem
 import com.rock.composedome.ui.theme.ComposeDomeTheme

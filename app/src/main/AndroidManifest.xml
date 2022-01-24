@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ComposeDome">
         <activity
-            android:name=".demo.widget.TextActivity"
+            android:name=".demo.widget.TextInputActivity"
             android:theme="@style/Theme.ComposeDome.NoActionBar"
             android:exported="false" />
+        <activity
+            android:name=".demo.widget.TextActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ComposeDome.NoActionBar" />
         <activity
             android:name=".WidgetsIndex"
             android:exported="false"

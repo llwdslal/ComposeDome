@@ -7,6 +7,7 @@ import android.text.SpannableStringBuilder
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -34,6 +35,8 @@ class TextActivity : AppCompatActivity() {
                 TextBasic()
                 Spacer(modifier = Modifier.height(8.dp))
                 TextMultiStyle()
+                Spacer(modifier = Modifier.height(8.dp))
+                TextSelectable()
             }
         }
     }
@@ -72,8 +75,10 @@ fun TextBasic(){
 
 @Composable
 fun TextMultiStyle(){
-    Column(modifier = Modifier.border(width = 1.dp, color = Color.Red, shape = RectangleShape)
-        .padding(16.dp).fillMaxWidth()) {
+    Column(modifier = Modifier
+        .border(width = 1.dp, color = Color.Red, shape = RectangleShape)
+        .padding(16.dp)
+        .fillMaxWidth()) {
         Text(text = buildAnnotatedString {
             //ParagraphStyle 设置段落样式
             withStyle(style = ParagraphStyle(lineHeight = 50.sp)){
@@ -91,5 +96,17 @@ fun TextMultiStyle(){
         },
             //设置整体样式
             fontStyle = FontStyle.Italic)
+    }
+}
+
+@Composable
+fun TextSelectable(){
+    Column(modifier = Modifier
+        .border(width = 1.dp, color = Color.Blue, shape = RectangleShape)
+        .padding(16.dp)
+        .fillMaxWidth()) {
+        SelectionContainer() {
+            Text(text = "TextSelectable".repeat(20))
+        }
     }
 }
