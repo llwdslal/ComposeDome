@@ -1,4 +1,4 @@
-package com.rock.composedome.compose.layout
+package com.rock.composedome.demo.layout
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

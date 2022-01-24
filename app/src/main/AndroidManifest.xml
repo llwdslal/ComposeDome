@@ -10,23 +10,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ComposeDome">
         <activity
-            android:name=".compose.layout.ScaffoldActivity"
+            android:name=".demo.widget.TextActivity"
             android:theme="@style/Theme.ComposeDome.NoActionBar"
             android:exported="false" />
         <activity
-            android:name=".compose.widget.SpacerActivity"
-            android:theme="@style/Theme.ComposeDome.NoActionBar"
-            android:exported="false" />
-        <activity
-            android:name=".compose.layout.RowActivity"
+            android:name=".WidgetsIndex"
             android:exported="false"
             android:theme="@style/Theme.ComposeDome.NoActionBar" />
         <activity
-            android:name=".compose.layout.ColumnActivity"
+            android:name=".demo.layout.ScaffoldActivity"
             android:exported="false"
             android:theme="@style/Theme.ComposeDome.NoActionBar" />
         <activity
-            android:name=".compose.layout.BoxActivity"
+            android:name=".demo.widget.SpacerActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ComposeDome.NoActionBar" />
+        <activity
+            android:name=".demo.layout.RowActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ComposeDome.NoActionBar" />
+        <activity
+            android:name=".demo.layout.ColumnActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ComposeDome.NoActionBar" />
+        <activity
+            android:name=".demo.layout.BoxActivity"
             android:exported="false"
             android:theme="@style/Theme.ComposeDome.NoActionBar" />
         <activity

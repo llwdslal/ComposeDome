@@ -1,4 +1,4 @@
-package com.rock.composedome.compose.layout
+package com.rock.composedome.demo.layout
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,23 +11,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
-class RowActivity : AppCompatActivity() {
+class ColumnActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            RowBasic()
+            ColumnBasic()
         }
     }
 }
 
 @Composable
-fun RowBasic(){
-    Row(
-        modifier = Modifier.height(200.dp).background(Color.Cyan).padding(20.dp),
-        verticalAlignment = Alignment.CenterVertically
+fun ColumnBasic(){
+    Column(
+        modifier = Modifier.fillMaxWidth().background(Color.Cyan).padding(20.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Box(modifier = Modifier.background(Color.Yellow).size(100.dp,60.dp))
-        Box(modifier = Modifier.background(Color.Magenta).size(100.dp,60.dp).align(Alignment.Top))
-        Box(modifier = Modifier.background(Color.LightGray).size(100.dp,60.dp).align(Alignment.Bottom))
+        Box(modifier = Modifier.background(Color.Yellow).size(200.dp,60.dp))
+        Box(modifier = Modifier.background(Color.Magenta).size(200.dp,60.dp).align(Alignment.Start))
+        Box(modifier = Modifier.background(Color.LightGray).size(200.dp,60.dp).align(Alignment.End))
     }
 }
