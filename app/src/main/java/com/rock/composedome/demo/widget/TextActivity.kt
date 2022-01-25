@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
+import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -37,6 +40,8 @@ class TextActivity : AppCompatActivity() {
                 TextMultiStyle()
                 Spacer(modifier = Modifier.height(8.dp))
                 TextSelectable()
+                Spacer(modifier = Modifier.height(8.dp))
+                TextAnnotated()
             }
         }
     }
@@ -108,5 +113,44 @@ fun TextSelectable(){
         SelectionContainer() {
             Text(text = "TextSelectable".repeat(20))
         }
+    }
+}
+
+@Composable
+fun TextAnnotated(){
+    val annotatedText = buildAnnotatedString {
+        append("ClickableText + AnnotatedString 实现的可点链接样式")
+        //开始添加一段注解字符串，指定 tag 和 annotation
+        pushStringAnnotation(tag = "URL_En", annotation = "https://developer.android.com")
+        withStyle(style = SpanStyle(color = Color.Blue, textDecoration = TextDecoration.LineThrough)) {
+            append("Android Developer")
+        }
+
+        append("没有调用 pop() 点到这注解部分也会触发")
+        //注解结束
+        pop()
+        append("或者")
+        pushStringAnnotation(tag = "URL_Ch", annotation = "https://developer.android.google.cn")
+        withStyle(style = SpanStyle(color = Color.Blue,textDecoration = TextDecoration.Underline) ) {
+            append("安卓开发者")
+        }
+        pop()
+    }
+    
+    Column(modifier = Modifier
+        .border(width = 1.dp, color = Color.Green, shape = RectangleShape)
+        .padding(16.dp)
+        .fillMaxWidth()) {
+        Text(text = "用 Text 实现的可点链接样式",color = Color.Blue, textDecoration = TextDecoration.Underline , modifier = Modifier.clickable {
+            Log.e("TextAnnotated","Text on click")
+        })
+        Spacer(modifier = Modifier.height(8.dp))
+        ClickableText(text = annotatedText, onClick = { offset ->
+            Log.e("ClickableText","点击到文本的位置:$offset")
+            annotatedText.getStringAnnotations(offset,offset).firstOrNull()?.let {
+                Log.e("TextAnnotated", "getStringAnnotations:${it.item} AnnotatedString:${it}")
+            }
+        })
+
     }
 }
