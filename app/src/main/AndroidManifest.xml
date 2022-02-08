@@ -10,9 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ComposeDome">
         <activity
-            android:name=".demo.widget.TextInputActivity"
+            android:name=".demo.widget.ButtonActivity"
+            android:exported="false"
             android:theme="@style/Theme.ComposeDome.NoActionBar"
-            android:exported="false" />
+            />
+        <activity
+            android:name=".demo.widget.TextInputActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ComposeDome.NoActionBar" />
         <activity
             android:name=".demo.widget.TextActivity"
             android:exported="false"
