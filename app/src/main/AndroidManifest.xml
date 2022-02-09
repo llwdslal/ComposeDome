@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ComposeDome">
         <activity
+            android:name=".demo.widget.StateButtonActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ComposeDome.NoActionBar" />
+        <activity
             android:name=".demo.widget.ImageActivity"
             android:exported="false"
             android:theme="@style/Theme.ComposeDome.NoActionBar" />

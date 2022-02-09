@@ -7,10 +7,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import com.rock.composedome.compose.OptionMenu
-import com.rock.composedome.demo.widget.ButtonActivity
-import com.rock.composedome.demo.widget.ImageActivity
-import com.rock.composedome.demo.widget.TextActivity
-import com.rock.composedome.demo.widget.TextFieldActivity
+import com.rock.composedome.demo.widget.*
 import com.rock.composedome.ktx.startActivity
 import com.rock.composedome.models.MenuItem
 
@@ -20,6 +17,7 @@ class WidgetsIndex : AppCompatActivity() {
         it.add(MenuItem("TextField"){startActivity(TextFieldActivity::class.java)})
         it.add(MenuItem("Button"){startActivity(ButtonActivity::class.java)})
         it.add(MenuItem("Image"){startActivity(ImageActivity::class.java)})
+        it.add(MenuItem("StateButton"){startActivity(StateButtonActivity::class.java)})
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

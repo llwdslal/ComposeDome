@@ -32,9 +32,6 @@ class ButtonActivity : AppCompatActivity() {
                 OutlinedButtonBasic()
                 IconButtonBasic()
                 TextButtonBasic()
-                IconToggleButtonBasic()
-                RadioButtonBasic()
-                RadioButtonCustom()
             }
         }
     }
@@ -102,51 +99,3 @@ fun TextButtonBasic(){
     }
 }
 
-@Composable
-fun IconToggleButtonBasic(){
-    var checked by remember { mutableStateOf(false)}
-    OutlinedColumn(color = Color.Cyan) {
-        IconToggleButton(checked = checked, onCheckedChange = {checked = it}) {
-            val tint by animateColorAsState(if (checked) Color(0xFFEC407A) else Color(0xFFB0BEC5))
-            Icon(Icons.Filled.CheckCircle, tint = tint, contentDescription = null)
-        }
-    }
-}
-
-@Composable
-fun RadioButtonBasic() {
-    var checkedIndex by remember { mutableStateOf(0) }
-    OutlinedColumn(color = Color.Magenta) {
-        //设置 selectableGroup 实现 RadioButton 互斥效果
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .selectableGroup()) {
-            RadioButton(selected = checkedIndex == 0, onClick = { checkedIndex = 0 })
-            RadioButton(selected = checkedIndex == 1, onClick = { checkedIndex = 1 })
-            RadioButton(selected = checkedIndex == 2, onClick = { checkedIndex = 2 })
-        }
-    }
-}
-
-@Composable
-fun RadioButtonCustom() {
-    val radioOptions = listOf("Calls", "Missed", "Friends")
-    val (selectedOption, onOptionSelected) = remember { mutableStateOf(0) }
-    OutlinedColumn(color = Color.Green) {
-        Row(
-            Modifier
-                .fillMaxWidth()
-                .selectableGroup(), horizontalArrangement = Arrangement.SpaceBetween) {
-            radioOptions.forEachIndexed { index,text ->
-                val selected = index == selectedOption
-                // Modifier.selectable() 实现 RadioButton
-                Row(Modifier.selectable(selected = selected, onClick = { onOptionSelected(index) },
-                    role = Role.RadioButton)) {
-                    val tint by animateColorAsState(if (selected) Color(0xFFEC407A) else Color(0xFFB0BEC5))
-                    Icon(Icons.Filled.CheckCircle, tint = tint, contentDescription = null)
-                    Text(text = text, modifier = Modifier.padding(start = 16.dp))
-                }
-            }
-        }
-    }
-}
