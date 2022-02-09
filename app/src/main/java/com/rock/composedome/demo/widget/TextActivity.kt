@@ -2,8 +2,6 @@ package com.rock.composedome.demo.widget
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.SpannableStringBuilder
 import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.border
@@ -33,6 +31,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.rock.composedome.R
+import com.rock.composedome.compose.OutlinedColumn
 
 class TextActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,13 +39,9 @@ class TextActivity : AppCompatActivity() {
         setContent {
             Column {
                 TextBasic()
-                Spacer(modifier = Modifier.height(8.dp))
                 TextMultiStyle()
-                Spacer(modifier = Modifier.height(8.dp))
                 TextSelectable()
-                Spacer(modifier = Modifier.height(8.dp))
                 TextAnnotated()
-                Spacer(modifier = Modifier.height(8.dp))
                 TextFontFamily()
             }
         }
@@ -55,10 +50,7 @@ class TextActivity : AppCompatActivity() {
 
 @Composable
 fun TextBasic(){
-    Column(modifier = Modifier
-        .border(width = 1.dp, color = Color.Cyan, shape = RectangleShape)
-        .padding(16.dp)
-        .fillMaxWidth()) {
+    OutlinedColumn(color = Color.Cyan) {
         //使用 string.xml 引用
         Text(text = stringResource(id = R.string.string_from_xml))
         //设置颜色
@@ -86,10 +78,7 @@ fun TextBasic(){
 
 @Composable
 fun TextMultiStyle(){
-    Column(modifier = Modifier
-        .border(width = 1.dp, color = Color.Red, shape = RectangleShape)
-        .padding(16.dp)
-        .fillMaxWidth()) {
+    OutlinedColumn(color = Color.Red) {
         Text(text = buildAnnotatedString {
             //ParagraphStyle 设置段落样式
             withStyle(style = ParagraphStyle(lineHeight = 30.sp)){
@@ -112,11 +101,8 @@ fun TextMultiStyle(){
 
 @Composable
 fun TextSelectable(){
-    Column(modifier = Modifier
-        .border(width = 1.dp, color = Color.Blue, shape = RectangleShape)
-        .padding(16.dp)
-        .fillMaxWidth()) {
-        SelectionContainer() {
+    OutlinedColumn(color = Color.Blue) {
+        SelectionContainer {
             Text(text = "TextSelectable".repeat(10))
         }
     }
@@ -142,11 +128,8 @@ fun TextAnnotated(){
         }
         pop()
     }
-    
-    Column(modifier = Modifier
-        .border(width = 1.dp, color = Color.Green, shape = RectangleShape)
-        .padding(16.dp)
-        .fillMaxWidth()) {
+
+    OutlinedColumn(color = Color.Green) {
         Text(text = "用 Text 实现的可点链接样式",color = Color.Blue, textDecoration = TextDecoration.Underline , modifier = Modifier.clickable {
             Log.e("TextAnnotated","Text on click")
         })

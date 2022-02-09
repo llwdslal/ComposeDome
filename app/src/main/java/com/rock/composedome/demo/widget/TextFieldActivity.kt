@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActionScope
@@ -19,7 +18,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.TextStyle
@@ -29,8 +27,9 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.rock.composedome.compose.OutlinedColumn
 
-class TextInputActivity : AppCompatActivity() {
+class TextFieldActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +37,7 @@ class TextInputActivity : AppCompatActivity() {
         setContent {
             Column{
                 TextFieldBasic{ onKeyDoneClick() }
-                Spacer(modifier = Modifier.height(8.dp))
                 PasswordStyle()
-                Spacer(modifier = Modifier.height(8.dp))
                 OutlinedTextFieldBasic{ onKeyDoneClick() }
             }
         }
@@ -72,10 +69,7 @@ fun TextFieldBasic(onKeyDoneClick: (KeyboardActionScope.() -> Unit)) {
         isError = inputContent.value.length > 11
     }
 
-    Column(modifier = Modifier
-        .border(width = 1.dp, color = Color.Cyan, shape = RectangleShape)
-        .padding(16.dp)
-        .fillMaxWidth()) {
+    OutlinedColumn(color = Color.Cyan) {
         TextField(
             modifier = Modifier.fillMaxWidth(),
             textStyle = TextStyle(fontSize = 18.sp),//输入文本的样式
@@ -130,10 +124,7 @@ fun PasswordStyle(){
             "123456789",
             TextRange(2, 5)))//选中的的区域
     }
-    Column(modifier = Modifier
-        .border(width = 1.dp, color = Color.Green, shape = RectangleShape)
-        .padding(16.dp)
-        .fillMaxWidth()) {
+    OutlinedColumn(color = Color.Green) {
         TextField(value = password, onValueChange = {password = it},
             //内容输入后 用'\uD83D' 代替
             visualTransformation = PasswordVisualTransformation(mask = '\uD83D'),
@@ -158,10 +149,7 @@ fun OutlinedTextFieldBasic(onKeyDoneClick: (KeyboardActionScope.() -> Unit)) {
         isError = inputContent.value.length > 11
     }
 
-    Column(modifier = Modifier
-        .border(width = 1.dp, color = Color.Cyan, shape = RectangleShape)
-        .padding(16.dp)
-        .fillMaxWidth()) {
+    OutlinedColumn(color = Color.Cyan) {
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             textStyle = TextStyle(fontSize = 18.sp),//输入文本的样式

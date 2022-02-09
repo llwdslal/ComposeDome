@@ -15,13 +15,13 @@ import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
+import com.rock.composedome.compose.OutlinedColumn
 
 class ButtonActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,17 +29,11 @@ class ButtonActivity : AppCompatActivity() {
         setContent {
             Column {
                 ButtonBasic()
-                Spacer(modifier = Modifier.height(8.dp))
                 OutlinedButtonBasic()
-                Spacer(modifier = Modifier.height(8.dp))
                 IconButtonBasic()
-                Spacer(modifier = Modifier.height(8.dp))
                 TextButtonBasic()
-                Spacer(modifier = Modifier.height(8.dp))
                 IconToggleButtonBasic()
-                Spacer(modifier = Modifier.height(8.dp))
                 RadioButtonBasic()
-                Spacer(modifier = Modifier.height(8.dp))
                 RadioButtonCustom()
             }
         }
@@ -51,11 +45,7 @@ fun ButtonBasic(){
     val context = LocalContext.current
     var buttonEnable:Boolean by remember { mutableStateOf(true)}
 
-    Column(modifier = Modifier
-        .border(width = 1.dp, color = Color.Cyan, shape = RectangleShape)
-        .padding(16.dp)
-        .fillMaxWidth()) {
-
+    OutlinedColumn(color = Color.Cyan) {
         Button(
             onClick = {Toast.makeText(context, "Click Button ", Toast.LENGTH_SHORT).show()},
             enabled = buttonEnable,
@@ -87,10 +77,7 @@ fun ButtonBasic(){
 
 @Composable
 fun OutlinedButtonBasic(){
-    Column(modifier = Modifier
-        .border(width = 1.dp, color = Color.Magenta, shape = RectangleShape)
-        .padding(16.dp)
-        .fillMaxWidth()) {
+    OutlinedColumn(color = Color.Magenta) {
         //默认带一个 border -> outlinedBorder
         OutlinedButton(onClick = {  },) {
             Text(text = "OutlinedButtonBasic" )
@@ -100,10 +87,7 @@ fun OutlinedButtonBasic(){
 
 @Composable
 fun IconButtonBasic(){
-    Column(modifier = Modifier
-        .border(width = 1.dp, color = Color.Yellow, shape = RectangleShape)
-        .padding(16.dp)
-        .fillMaxWidth()) {
+    OutlinedColumn(color = Color.Yellow) {
         IconButton(onClick = {}) {
             Icon(Icons.Filled.Favorite, contentDescription = null )
         }
@@ -112,10 +96,7 @@ fun IconButtonBasic(){
 
 @Composable
 fun TextButtonBasic(){
-    Column(modifier = Modifier
-        .border(width = 1.dp, color = Color.Green, shape = RectangleShape)
-        .padding(16.dp)
-        .fillMaxWidth()) {
+    OutlinedColumn(color = Color.Green) {
         TextButton(onClick = {}) { Text("TextButtonBasic") }
         Text(text = "TextButtonBasic", modifier = Modifier.clickable(onClick = {}))
     }
@@ -124,10 +105,7 @@ fun TextButtonBasic(){
 @Composable
 fun IconToggleButtonBasic(){
     var checked by remember { mutableStateOf(false)}
-    Column(modifier = Modifier
-        .border(width = 1.dp, color = Color.Cyan, shape = RectangleShape)
-        .padding(16.dp)
-        .fillMaxWidth()) {
+    OutlinedColumn(color = Color.Cyan) {
         IconToggleButton(checked = checked, onCheckedChange = {checked = it}) {
             val tint by animateColorAsState(if (checked) Color(0xFFEC407A) else Color(0xFFB0BEC5))
             Icon(Icons.Filled.CheckCircle, tint = tint, contentDescription = null)
@@ -138,11 +116,7 @@ fun IconToggleButtonBasic(){
 @Composable
 fun RadioButtonBasic() {
     var checkedIndex by remember { mutableStateOf(0) }
-    Column(modifier = Modifier
-        .border(width = 1.dp, color = Color.Magenta, shape = RectangleShape)
-        .padding(16.dp)
-        .fillMaxWidth()
-    ) {
+    OutlinedColumn(color = Color.Magenta) {
         //设置 selectableGroup 实现 RadioButton 互斥效果
         Row(modifier = Modifier
             .fillMaxWidth()
@@ -158,10 +132,11 @@ fun RadioButtonBasic() {
 fun RadioButtonCustom() {
     val radioOptions = listOf("Calls", "Missed", "Friends")
     val (selectedOption, onOptionSelected) = remember { mutableStateOf(0) }
-    Column(modifier = Modifier.border(width = 1.dp, color = Color.Green, shape = RectangleShape)
-        .padding(16.dp).fillMaxWidth()) {
-
-        Row(Modifier.fillMaxWidth().selectableGroup(), horizontalArrangement = Arrangement.SpaceBetween) {
+    OutlinedColumn(color = Color.Green) {
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .selectableGroup(), horizontalArrangement = Arrangement.SpaceBetween) {
             radioOptions.forEachIndexed { index,text ->
                 val selected = index == selectedOption
                 // Modifier.selectable() 实现 RadioButton
