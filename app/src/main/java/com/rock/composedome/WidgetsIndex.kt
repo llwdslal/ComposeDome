@@ -18,6 +18,7 @@ class WidgetsIndex : AppCompatActivity() {
         it.add(MenuItem("Button"){startActivity(ButtonActivity::class.java)})
         it.add(MenuItem("Image"){startActivity(ImageActivity::class.java)})
         it.add(MenuItem("StateButton"){startActivity(StateButtonActivity::class.java)})
+        it.add(MenuItem("SliderProgressBar"){startActivity(SliderProgressBarActivity::class.java)})
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
