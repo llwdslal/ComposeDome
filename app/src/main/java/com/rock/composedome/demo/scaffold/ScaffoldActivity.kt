@@ -1,4 +1,4 @@
-package com.rock.composedome.demo.layout
+package com.rock.composedome.demo.scaffold
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,7 +19,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 class ScaffoldActivity : AppCompatActivity() {
-    @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent { 
@@ -28,7 +27,6 @@ class ScaffoldActivity : AppCompatActivity() {
     }
 }
 
-@ExperimentalMaterialApi
 @Composable
 fun ScaffoldBasic(){
     Scaffold(
@@ -39,7 +37,9 @@ fun ScaffoldBasic(){
         floatingActionButtonPosition = FabPosition.Center,
         drawerGesturesEnabled = true,
         drawerShape = RoundedCornerShape(4.dp),
-        drawerContent = { Box(modifier = Modifier.fillMaxSize().background(Color.Yellow))}
+        drawerContent = { Box(modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Yellow))}
 
     ) {
 
@@ -113,7 +113,7 @@ fun TopAppBarBasic2(){
 
 //region BottomAppBar
 
-@ExperimentalMaterialApi
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun BottomAppBarBasic(){
     val checked  = remember { mutableStateOf(false)}
@@ -129,7 +129,7 @@ fun BottomAppBarBasic(){
         IconButton(onClick = {},modifier = Modifier
 //            .background(Color.Yellow)
             .weight(0.2f)) {
-            BadgeBox(badgeContent = {Text("99")}){
+            BadgedBox(badge = {Text("99")}){
                 Icon(Icons.Filled.Edit, null)
             }
         }
