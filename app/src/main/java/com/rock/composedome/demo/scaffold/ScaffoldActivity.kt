@@ -46,70 +46,7 @@ fun ScaffoldBasic(){
     }
 }
 
-//region  TopAppBar
-@Composable
-fun TopAppBarBasic(){
-    TopAppBar(
-        backgroundColor = Color.DarkGray,
-        contentColor = Color.White,
-        elevation = 20.dp,
-        navigationIcon = {
-            IconButton(onClick = {},modifier = Modifier.background(Color.Red)) {
-                Icon(Icons.Filled.Close, null)
-            }
-        },
-        title = {
-            Text(
-                modifier = Modifier
-                    .background(Color.White)
-                    .fillMaxWidth(),
-                color = Color.Green,
-                text = "TopAppBar"
-            )
-        },
-        actions = {//row
-            IconButton(onClick = {},modifier = Modifier.background(Color.Blue)) {
-                Icon(Icons.Filled.Email, null)
-            }
-            IconButton(onClick = {},modifier = Modifier.background(Color.Yellow)) {
-                Icon(Icons.Filled.Edit, null)
-            }
-            IconButton(onClick = {},modifier = Modifier.background(Color.Magenta)) {
-                Icon(Icons.Filled.Phone, null)
-            }
-            IconButton(onClick = {},modifier = Modifier.background(Color.Green)) {
-                Icon(Icons.Filled.Home, null)
-            }
-            IconButton(onClick = {},modifier = Modifier.background(Color.Blue)) {
-                Icon(Icons.Filled.Email, null)
-            }
-        }
 
-    )
-}
-
-@Composable
-fun TopAppBarBasic2(){
-    TopAppBar(backgroundColor = Color.LightGray) {
-        //父容器是 Row
-        IconButton(onClick = {},modifier = Modifier.background(Color.Red)) {
-            Icon(Icons.Filled.Close, null)
-        }
-        Text(
-            modifier = Modifier
-                .background(Color.White)
-                .weight(1f),
-            color = Color.Green,
-            textAlign = TextAlign.Center,
-            text = "TopAppBar"
-        )
-        IconButton(onClick = {},modifier = Modifier.background(Color.Blue)) {
-            Icon(Icons.Filled.Email, null)
-        }
-    }
-}
-
-//endregion  End
 
 //region BottomAppBar
 
