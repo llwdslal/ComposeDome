@@ -4,9 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.compose.setContent
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.rock.composedome.compose.OutlinedColumn
@@ -18,6 +23,9 @@ class SliderProgressBarActivity : AppCompatActivity() {
         setContent {
             Column {
                 CircularProgressIndicatorBasic()
+                CircularProgressIndicatorBasic2()
+                LinearProgressIndicatorBasic()
+                LinearProgressIndicatorBasic2()
                 SliderBasic()
                 RangeSliderBasic()
             }
@@ -83,9 +91,60 @@ fun RangeSliderBasic(){
 @Composable
 fun CircularProgressIndicatorBasic(){
     OutlinedColumn(color = Color.Green) {
-        CircularProgressIndicator(
-            color = Color.Magenta,
-            strokeWidth = 4.dp
-        )
+        CircularProgressIndicator(color = Color.Magenta, strokeWidth = 4.dp)
+    }
+}
+@Composable
+fun CircularProgressIndicatorBasic2(){
+    var progress by remember { mutableStateOf(0.1f) }
+    val animatedProgress by animateFloatAsState(targetValue = progress,
+        animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec)
+    OutlinedColumn(color = Color.Blue) {
+       Row {
+           CircularProgressIndicator(
+               /*@FloatRange(from = 0.0, to = 1.0)*/
+               progress = animatedProgress,
+               color = Color.Magenta,
+               strokeWidth = 8.dp
+           )
+           Spacer(modifier = Modifier.width(4.dp))
+           Button(onClick = {
+               if (progress > 1f){
+                   progress -= 1f
+               }
+               progress += 0.1f
+
+           }) { Text(text = "Increase")}
+       }
+    }
+}
+
+@Composable
+fun LinearProgressIndicatorBasic(){
+    OutlinedColumn(color = Color.Red) {
+        LinearProgressIndicator(color = Color.Magenta, backgroundColor = Color.Cyan)
+    }
+}
+@Composable
+fun LinearProgressIndicatorBasic2(){
+    var progress by remember { mutableStateOf(0.1f) }
+    val animatedProgress by animateFloatAsState(targetValue = progress,
+        animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec)
+    OutlinedColumn(color = Color.Blue) {
+        Row {
+            LinearProgressIndicator(
+                /*@FloatRange(from = 0.0, to = 1.0)*/
+                progress = animatedProgress,
+                color = Color.Magenta,
+                backgroundColor = Color.Cyan
+            )
+            Spacer(modifier = Modifier.width(4.dp))
+            Button(onClick = {
+                progress += 0.1f
+                if (progress > 1f){
+                    progress -= 1f
+                }
+            }) { Text(text = "Increase")}
+        }
     }
 }
