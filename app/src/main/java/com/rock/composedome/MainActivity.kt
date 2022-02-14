@@ -15,6 +15,7 @@ class MainActivity : ComponentActivity() {
         it.add(MenuItem("布局 Layouts"){startActivity(LayoutsIndex::class.java)})
         it.add(MenuItem("组件 Widgets"){startActivity(WidgetsIndex::class.java)})
         it.add(MenuItem("脚手架 Scaffold"){startActivity(ScaffoldIndex::class.java)})
+        it.add(MenuItem("列表 LazyList"){startActivity(ListIndex::class.java)})
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

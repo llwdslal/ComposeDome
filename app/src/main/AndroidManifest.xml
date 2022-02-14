@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ComposeDome">
         <activity
+            android:name=".ListIndex"
+            android:exported="false"
+            android:theme="@style/Theme.ComposeDome.NoActionBar"/>
+        <activity
+            android:name=".demo.lazylist.LazyColumnActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ComposeDome.NoActionBar" />
+        <activity
+            android:name=".demo.scaffold.SnackBarActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ComposeDome.NoActionBar" />
+        <activity
             android:name=".demo.scaffold.DrawerActivity"
             android:exported="false"
             android:theme="@style/Theme.ComposeDome.NoActionBar" />
