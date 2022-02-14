@@ -31,7 +31,7 @@ class ScaffoldActivity : AppCompatActivity() {
 fun ScaffoldBasic(){
     Scaffold(
         topBar = { TopAppBarBasic2() },
-        bottomBar = { BottomAppBarBasic() },
+        bottomBar = { BottomAppBarBasic2() },
         floatingActionButton = { FloatingActionButtonBasic() },
         isFloatingActionButtonDocked = true,
         floatingActionButtonPosition = FabPosition.Center,
@@ -47,61 +47,4 @@ fun ScaffoldBasic(){
 }
 
 
-
-//region BottomAppBar
-
-@OptIn(ExperimentalMaterialApi::class)
-@Composable
-fun BottomAppBarBasic(){
-    val checked  = remember { mutableStateOf(false)}
-
-    BottomAppBar(
-        cutoutShape = CircleShape,
-    ) {
-        IconButton(onClick = {},modifier = Modifier
-//            .background(Color.Blue)
-            .weight(0.2f)) {
-            Icon(Icons.Filled.Email, null)
-        }
-        IconButton(onClick = {},modifier = Modifier
-//            .background(Color.Yellow)
-            .weight(0.2f)) {
-            BadgedBox(badge = {Text("99")}){
-                Icon(Icons.Filled.Edit, null)
-            }
-        }
-        Spacer(modifier = Modifier.weight(0.2f))
-        IconButton(onClick = {},modifier = Modifier
-//            .background(Color.Magenta)
-            .weight(0.2f)) {
-            Icon(Icons.Filled.Phone, null)
-        }
-
-        IconToggleButton(checked = checked.value, onCheckedChange = {checked.value = it},
-            modifier = Modifier.weight(0.2f) //.background(Color.Green)
-            ) {
-            val tintColor =  if (checked.value) Color.Magenta else Color.White
-            Icon(Icons.Filled.Home, null, tint = tintColor)
-        }
-
-//        IconButton(onClick = {},modifier = Modifier
-////            .background(Color.Green)
-//            .weight(0.2f)) {
-//            Icon(Icons.Filled.Home, null)
-//        }
-    }
-}
-//endregion BottomAppBar End
-
-//region
-@Composable
-fun FloatingActionButtonBasic(){
-    FloatingActionButton(
-        onClick = { },
-        shape = CircleShape,
-    ) {
-        Icon(Icons.Filled.Add, null)
-    }
-}
-//endregion  End
 

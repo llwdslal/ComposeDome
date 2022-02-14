@@ -10,6 +10,7 @@ import com.rock.composedome.compose.OptionMenu
 import com.rock.composedome.demo.layout.BoxActivity
 import com.rock.composedome.demo.layout.ColumnActivity
 import com.rock.composedome.demo.layout.RowActivity
+import com.rock.composedome.demo.scaffold.BottomBarActivity
 import com.rock.composedome.demo.scaffold.ScaffoldActivity
 import com.rock.composedome.demo.scaffold.TopBarActivity
 import com.rock.composedome.demo.widget.SpacerActivity
@@ -19,6 +20,7 @@ import com.rock.composedome.models.MenuItem
 class ScaffoldIndex : AppCompatActivity() {
     private val menuItems = mutableListOf<MenuItem>().also {
         it.add(MenuItem("TopBar"){startActivity(TopBarActivity::class.java)})
+        it.add(MenuItem("BottomBar"){startActivity(BottomBarActivity::class.java)})
         it.add(MenuItem("Scaffold"){startActivity(ScaffoldActivity::class.java)})
     }
     override fun onCreate(savedInstanceState: Bundle?) {
