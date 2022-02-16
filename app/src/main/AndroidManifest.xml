@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rock.composedome">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".ComposeApplication"
         android:allowBackup="true"
@@ -11,9 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ComposeDome">
         <activity
+            android:name=".demo.scaffold.BottomNavigationActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ComposeDome.NoActionBar" />
+        <activity
             android:name=".ListIndex"
             android:exported="false"
-            android:theme="@style/Theme.ComposeDome.NoActionBar"/>
+            android:theme="@style/Theme.ComposeDome.NoActionBar" />
         <activity
             android:name=".demo.lazylist.LazyColumnActivity"
             android:exported="false"
