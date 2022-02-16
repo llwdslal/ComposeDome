@@ -16,6 +16,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberImagePainter
+import coil.transform.CircleCropTransformation
 import com.rock.composedome.R
 import com.rock.composedome.compose.OutlinedColumn
 
@@ -27,6 +29,8 @@ class ImageActivity : AppCompatActivity() {
                 ImageBasic()
                 ImageBasic2()
                 IconBasic()
+                ImageFromNet()
+                ImageGif()
             }
         }
     }
@@ -42,18 +46,24 @@ fun ImageBasic() {
                 contentDescription = "",)
 
             Image(painter = painterResource(imageResId),
-                modifier = Modifier.background(Color.Gray).size(50.dp, 100.dp),
+                modifier = Modifier
+                    .background(Color.Gray)
+                    .size(50.dp, 100.dp),
                 contentDescription = "",)
 
             Image(painter = painterResource(imageResId),
-                modifier = Modifier.background(Color.Gray).size(50.dp, 100.dp),
+                modifier = Modifier
+                    .background(Color.Gray)
+                    .size(50.dp, 100.dp),
                 //默认 Alignment.Center
                 alignment = Alignment.TopCenter,
                 contentDescription = "",
             )
 
             Image(painter = painterResource(imageResId),
-                modifier = Modifier.background(Color.Gray).size(50.dp, 100.dp),
+                modifier = Modifier
+                    .background(Color.Gray)
+                    .size(50.dp, 100.dp),
                 //默认 ContentScale.Fit
                 contentScale = ContentScale.FillHeight,
                 contentDescription = "",
@@ -69,10 +79,27 @@ fun ImageBasic2() {
     }
 }
 
-//fixme
 @Composable
 fun ImageFromNet(){
-
+    val imageUrl = "https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D450%2C600/sign=0058b75d632762d0806bacbb95dc24cc/e7cd7b899e510fb3a6907fe9d933c895d0430cc6.jpg"
+    OutlinedColumn(color = Color.Magenta) {
+        Image(
+            modifier = Modifier.size(60.dp),
+            painter = rememberImagePainter(
+                data = imageUrl,
+                builder = {
+                    //变形
+                    transformations(CircleCropTransformation())
+                    //动画
+                    crossfade(true)
+                }),
+            contentDescription = "")
+    }
+}
+@Composable
+fun ImageGif(){
+    val imageUrl = "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202003%2F29%2F20200329042030_uCcGM.thumb.400_0.gif"
+    Image(painter = rememberImagePainter(data = imageUrl), contentDescription = "")
 }
 
 @Composable
