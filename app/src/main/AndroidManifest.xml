@@ -13,6 +13,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ComposeDome">
         <activity
+            android:name=".demo.gesture.DragActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ComposeDome.NoActionBar"
+            />
+        <activity
+            android:name=".demo.gesture.ScrollActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ComposeDome.NoActionBar" />
+        <activity
+            android:name=".demo.gesture.PressActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ComposeDome.NoActionBar" />
+        <activity
+            android:name=".GestureIndex"
+            android:exported="false"
+            android:theme="@style/Theme.ComposeDome.NoActionBar" />
+        <activity
             android:name=".demo.scaffold.BottomNavigationActivity"
             android:exported="false"
             android:theme="@style/Theme.ComposeDome.NoActionBar" />

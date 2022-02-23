@@ -16,6 +16,7 @@ class MainActivity : ComponentActivity() {
         it.add(MenuItem("组件 Widgets"){startActivity(WidgetsIndex::class.java)})
         it.add(MenuItem("脚手架 Scaffold"){startActivity(ScaffoldIndex::class.java)})
         it.add(MenuItem("列表 LazyList"){startActivity(ListIndex::class.java)})
+        it.add(MenuItem("手势 Gesture"){startActivity(GestureIndex::class.java)})
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
